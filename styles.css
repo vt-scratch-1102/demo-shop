@@ -64,7 +64,8 @@ main { flex: 1; padding-bottom: 48px; outline: none; }
 .search { margin: 0 0 20px; }
 .search input { font: inherit; width: 100%; max-width: 360px; padding: 10px 14px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--surface); }
 .search input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
-.card[hidden] { display: none; }
+/* An element marked hidden stays hidden even when its class sets a display (.card, .empty). */
+[hidden] { display: none !important; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0; }
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
 .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 12px; position: relative; }
