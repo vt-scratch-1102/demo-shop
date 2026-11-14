@@ -234,7 +234,7 @@
       err.textContent = "Please fill in every field.";
       return;
     }
-    if (String(data.card).replace(/\s+/g, "").length !== 16) {
+    if (!/^\d{16}$/.test(String(data.card).replace(/\s+/g, ""))) {
       err.textContent = "The card number needs 16 digits.";
       return;
     }
