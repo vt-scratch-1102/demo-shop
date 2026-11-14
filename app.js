@@ -227,6 +227,7 @@
   }
 
   function placeOrder(form) {
+    if (cart.length === 0) return; // a second press after the order landed changes nothing
     const data = Object.fromEntries(new FormData(form).entries());
     const err = form.querySelector("#form-error");
     const missing = ["name", "address", "city", "postcode", "card"].filter((k) => !String(data[k] || "").trim());
@@ -250,6 +251,8 @@
     store.set("orders:" + user.email, orders);
     cart = [];
     saveCart();
+    const submitBtn = form.querySelector("button[type=submit]");
+    if (submitBtn) submitBtn.disabled = true;
     location.hash = "#/done/" + number;
   }
 
